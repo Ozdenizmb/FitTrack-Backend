@@ -37,7 +37,10 @@ public class SecurityConfig {
 
     private static final String[] USER_ENDPOINTS = {
             "/api/v1/users/update/{id}",
-            "/api/v1/users/delete/{id}"
+            "/api/v1/users/delete/{id}",
+            "/api/v1/assets",
+            "/api/v1/assets/get/{fileName}",
+            "/api/v1/assets/delete/{fileName}",
     };
 
     @Bean

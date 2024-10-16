@@ -15,6 +15,13 @@ spring:
       initial-size: 5
       max-size: 10
 
+## FILE ##
+file:
+  path: ${user.dir}/image/
+  allowed-formats: png, jpeg, jpg
+  default-image-height: 2000
+  default-image-width: 2000
+
 ## OpenApi Settings ##
 springdoc:
   swagger-ui:
