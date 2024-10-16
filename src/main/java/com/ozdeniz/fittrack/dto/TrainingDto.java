@@ -1,5 +1,7 @@
 package com.ozdeniz.fittrack.dto;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public record TrainingDto(
@@ -7,8 +9,10 @@ public record TrainingDto(
         UUID userId,
         String title,
         String description,
-        String duration,
+        LocalTime duration,
         String category,
-        String imageName
+        byte[] image,
+        LocalDateTime createdDate,
+        LocalDateTime updatedDate
 ) {
 }

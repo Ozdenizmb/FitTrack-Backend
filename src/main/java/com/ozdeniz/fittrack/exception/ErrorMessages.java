@@ -22,4 +22,6 @@ public class ErrorMessages {
 
     public static final String UNSUPPORTED_FILE_TYPE = "Unsupported file. Only PNG, JPEG and JPG supported";
 
+    public static final String TRAINING_NOT_FOUND = "Training Not Found!";
+
 }

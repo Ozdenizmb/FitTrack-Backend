@@ -16,6 +16,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -94,6 +99,26 @@ public class AssetServiceImpl implements AssetService {
             throw FittrackException.withStatusAndMessage(HttpStatus.NOT_FOUND, ErrorMessages.FILE_NOT_FOUND);
         }
 
+    }
+
+    @Override
+    public byte[] getImageFromUrl(String imageUrl) {
+        try {
+            URI uri = new URI(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            if (connection.getResponseCode() == 200) {
+                try (InputStream inputStream = connection.getInputStream()) {
+                    return inputStream.readAllBytes();
+                }
+            } else {
+                throw new RuntimeException("Failed to fetch image from URL: " + imageUrl);
+            }
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException("Error fetching image from URL: " + imageUrl, e);
+        }
     }
 
     @Override
