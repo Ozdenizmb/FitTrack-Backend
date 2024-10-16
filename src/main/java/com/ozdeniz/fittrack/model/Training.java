@@ -24,6 +24,8 @@ public class Training extends BaseEntity {
     @GeneratedValue
     private UUID id;
 
+    @Column(name = "user_id")
+    private UUID userId;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
