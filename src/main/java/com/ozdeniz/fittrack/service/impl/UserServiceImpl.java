@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto updateUser(UUID id, UserUpdateDto userUpdateDto) {
         if(!authService.verifyUserIdMatchesAuthenticatedUser(id)) {
-            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.UNAUTHORIZED);
+            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.FORBIDDEN);
         }
 
         Optional<User> existUser = repository.findById(id);
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean deleteUser(UUID id) {
         if(!authService.verifyUserIdMatchesAuthenticatedUser(id)) {
-            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.UNAUTHORIZED);
+            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.FORBIDDEN);
         }
 
         Optional<User> existUser = repository.findById(id);

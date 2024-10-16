@@ -14,6 +14,8 @@ public class ErrorMessages {
 
     public static final String UNAUTHORIZED = "Unauthorized!";
 
+    public static final String FORBIDDEN = "Forbidden!";
+
     public static final String FILE_NOT_FOUND = "File Not Found!";
 
     public static final String FILE_CANNOT_DELETE = "An error occurred while deleting the file!";

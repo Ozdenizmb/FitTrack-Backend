@@ -10,6 +10,7 @@ import com.ozdeniz.fittrack.model.Training;
 import com.ozdeniz.fittrack.repository.CategoryRepository;
 import com.ozdeniz.fittrack.repository.TrainingRepository;
 import com.ozdeniz.fittrack.service.AssetService;
+import com.ozdeniz.fittrack.service.AuthService;
 import com.ozdeniz.fittrack.service.TrainingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +27,7 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository repository;
     private final AssetService assetService;
     private final CategoryRepository categoryRepository;
+    private final AuthService authService;
 
     @Override
     public UUID createTraining(TrainingCreateDto trainingCreateDto, MultipartFile image) {
@@ -99,6 +101,11 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         Training training = existTraining.get();
+
+        if(!authService.verifyUserIdMatchesAuthenticatedUser(training.getUserId())) {
+            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.FORBIDDEN);
+        }
+
         BeanUtils.copyProperties(trainingUpdateDto, training);
 
         String imageName = assetService.uploadImage(image);
@@ -121,6 +128,11 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         Training training = existTraining.get();
+
+        if(!authService.verifyUserIdMatchesAuthenticatedUser(training.getUserId())) {
+            throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.FORBIDDEN);
+        }
+
         if(training.getImageName() != null && !training.getImageName().startsWith("https://")) {
             assetService.deleteImage(training.getImageName());
         }
