@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,9 +15,9 @@ import java.util.UUID;
 @Data
 @Builder
 @Entity
-@Table(name = "training_data", schema = "util_sch")
+@Table(name = "favorite_data", schema = "util_sch")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Training extends BaseEntity {
+public class Favorite extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -26,17 +25,7 @@ public class Training extends BaseEntity {
 
     @Column(name = "user_id")
     private UUID userId;
-    @Column(name = "title")
-    private String title;
-    @Column(name = "description")
-    private String description;
-    @Column(name = "duration")
-    private LocalTime duration;
-    @Column(name = "difficulty")
-    private int difficulty;
-    @Column(name = "category")
-    private int category;
-    @Column(name = "image_name")
-    private String imageName;
+    @Column(name = "training_id")
+    private UUID trainingId;
 
 }

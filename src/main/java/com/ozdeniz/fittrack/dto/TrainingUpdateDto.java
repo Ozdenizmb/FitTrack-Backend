@@ -15,6 +15,8 @@ public record TrainingUpdateDto(
         @NotNull
         LocalTime duration,
         @NotNull
+        int difficulty,
+        @NotNull
         int category
 ) {
 }

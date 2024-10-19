@@ -1,11 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS util_sch;
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE IF NOT EXISTS util_sch.asset_data
+CREATE TABLE IF NOT EXISTS util_sch.difficulty_data
 (
-    id                  uuid DEFAULT uuid_generate_v4(),
-    name                     VARCHAR NOT NULL UNIQUE,
-    type                     VARCHAR NOT NULL,
-    image_path               VARCHAR NOT NULL UNIQUE,
+    id                       INT NOT NULL,
+    name                     VARCHAR NOT NULL,
     PRIMARY KEY (id)
 );

@@ -10,6 +10,7 @@ public record TrainingDto(
         String title,
         String description,
         LocalTime duration,
+        String difficulty,
         String category,
         byte[] image,
         LocalDateTime createdDate,

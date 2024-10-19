@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS util_sch.training_data
     title                    VARCHAR NOT NULL UNIQUE,
     description              VARCHAR NOT NULL,
     duration                 TIME NOT NULL,
+    difficulty               INT NOT NULL,
     category                 INT NOT NULL,
     image_name               VARCHAR NOT NULL UNIQUE,
     created_date             DATE NOT NULL,
@@ -15,5 +16,6 @@ CREATE TABLE IF NOT EXISTS util_sch.training_data
     version                  INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES util_sch.user_data(id),
+    FOREIGN KEY (difficulty) REFERENCES util_sch.difficulty_data(id),
     FOREIGN KEY (category) REFERENCES util_sch.category_data(id)
 );

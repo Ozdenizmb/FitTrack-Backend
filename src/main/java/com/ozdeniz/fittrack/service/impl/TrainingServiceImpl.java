@@ -6,8 +6,10 @@ import com.ozdeniz.fittrack.dto.TrainingUpdateDto;
 import com.ozdeniz.fittrack.exception.ErrorMessages;
 import com.ozdeniz.fittrack.exception.FittrackException;
 import com.ozdeniz.fittrack.model.Category;
+import com.ozdeniz.fittrack.model.Difficulty;
 import com.ozdeniz.fittrack.model.Training;
 import com.ozdeniz.fittrack.repository.CategoryRepository;
+import com.ozdeniz.fittrack.repository.DifficultyRepository;
 import com.ozdeniz.fittrack.repository.TrainingRepository;
 import com.ozdeniz.fittrack.service.AssetService;
 import com.ozdeniz.fittrack.service.AuthService;
@@ -27,6 +29,7 @@ public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository repository;
     private final AssetService assetService;
     private final CategoryRepository categoryRepository;
+    private final DifficultyRepository difficultyRepository;
     private final AuthService authService;
 
     @Override
@@ -41,6 +44,12 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     public TrainingDto convertTrainingData(Training training) {
+        String difficulty = "";
+        Optional<Difficulty> existDifficulty = difficultyRepository.findById(training.getDifficulty());
+        if (existDifficulty.isPresent()) {
+            difficulty = existDifficulty.get().getName();
+        }
+
         String categoryName = "";
         Optional<Category> existCategory = categoryRepository.findById(training.getCategory());
         if (existCategory.isPresent()) {
@@ -58,6 +67,7 @@ public class TrainingServiceImpl implements TrainingService {
                 training.getTitle(),
                 training.getDescription(),
                 training.getDuration(),
+                difficulty,
                 categoryName,
                 image,
                 training.getCreatedDate(),
