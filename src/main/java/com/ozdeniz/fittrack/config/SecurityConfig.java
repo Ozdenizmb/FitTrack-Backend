@@ -34,7 +34,8 @@ public class SecurityConfig {
             "/api/v1/users/get/id/{id}",
             "/api/v1/users/get/email/{email}",
             "/api/v1/trainings/get/{id}",
-            "/api/v1/trainings/get"
+            "/api/v1/trainings/get",
+            "/api/v1/favorites/get/training/{trainingId}"
     };
 
     private static final String[] USER_ENDPOINTS = {
@@ -45,7 +46,11 @@ public class SecurityConfig {
             "/api/v1/assets/delete/{fileName}",
             "/api/v1/trainings/create",
             "/api/v1/trainings/update/{id}",
-            "/api/v1/trainings/delete/{id}"
+            "/api/v1/trainings/delete/{id}",
+            "/api/v1/favorites/add",
+            "/api/v1/favorites/delete",
+            "/api/v1/favorites/wasIFavorites",
+            "/api/v1/favorites/get/user/{userId}"
     };
 
     @Bean

@@ -11,5 +11,6 @@ CREATE TABLE IF NOT EXISTS util_sch.favorite_data
     version                   INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES util_sch.user_data(id),
-    FOREIGN KEY (training_id) REFERENCES util_sch.training_data(id)
+    FOREIGN KEY (training_id) REFERENCES util_sch.training_data(id),
+    CONSTRAINT unique_favorite_per_user UNIQUE (user_id, training_id)
 );
