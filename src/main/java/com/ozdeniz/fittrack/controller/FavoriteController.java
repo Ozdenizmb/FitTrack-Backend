@@ -16,7 +16,6 @@ public class FavoriteController implements FavoriteApi {
 
     @Override
     public ResponseEntity<UUID> addFavorite(UUID userId, UUID trainingId) {
-        System.out.println(userId+"-"+trainingId);
         return ResponseEntity.ok(service.addFavorite(userId, trainingId));
     }
 

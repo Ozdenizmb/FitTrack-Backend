@@ -12,8 +12,6 @@ public class ErrorMessages {
 
     public static final String EMAIL_NOT_FOUND = "Email Not Found!";
 
-    public static final String UNAUTHORIZED = "Unauthorized!";
-
     public static final String FORBIDDEN = "Forbidden!";
 
     public static final String FILE_NOT_FOUND = "File Not Found!";

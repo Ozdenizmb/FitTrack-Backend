@@ -23,15 +23,12 @@ public class FavoriteServiceImpl implements FavoriteService {
 
     @Override
     public UUID addFavorite(UUID userId, UUID trainingId) {
-        System.out.println("selam");
         if(!authService.verifyUserIdMatchesAuthenticatedUser(userId)) {
             throw FittrackException.withStatusAndMessage(HttpStatus.FORBIDDEN, ErrorMessages.FORBIDDEN);
         }
-        System.out.println("selam");
         Favorite favorite = new Favorite();
         favorite.setUserId(userId);
         favorite.setTrainingId(trainingId);
-        System.out.println("selam");
         return repository.save(favorite).getId();
     }
 
