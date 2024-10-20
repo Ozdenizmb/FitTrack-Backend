@@ -17,3 +17,8 @@
 <br>
 <p><i>Access the project's Mobile from the following link:</i></p>
 <p>https://github.com/Ozdenizmb/FitTrack-Mobile</p>
+
+<br><br><br>
+<h2>Screenshots</h2>
+<br>
+![Backend](https://github.com/user-attachments/assets/89380a35-96c2-4449-92b3-f45b9eabd02c)
