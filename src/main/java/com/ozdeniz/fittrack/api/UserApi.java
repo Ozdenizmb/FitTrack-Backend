@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -34,7 +35,7 @@ public interface UserApi {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Error.class)))
     })
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<UUID> signUp(@RequestBody UserCreateDto userCreateDto);
+    ResponseEntity<UUID> signUp(@RequestBody @Valid UserCreateDto userCreateDto);
 
     @Operation(operationId = "loginUser", summary = "Login user. (If correct values are sent to the Login method on the frontend, automatically perform the authorization process immediately afterward. /{AuthService})")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "SUCCESS", content = @Content(schema = @Schema(implementation = UserDto.class))),
@@ -86,7 +87,7 @@ public interface UserApi {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Error.class)))
     })
     @PutMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<UserDto> updateUser(@PathVariable UUID id, @RequestBody UserUpdateDto userUpdateDto);
+    ResponseEntity<UserDto> updateUser(@PathVariable UUID id, @RequestBody @Valid UserUpdateDto userUpdateDto);
 
     @Operation(operationId = "deleteUser", summary = "Delete user.")
     @ApiResponses(value = {@ApiResponse(responseCode = "204", description = "No Content"),
