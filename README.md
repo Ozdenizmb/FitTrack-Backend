@@ -10,13 +10,13 @@
 <p>Update the database's username and password information to be compatible with your own database.</p>
 <p>Make sure you have a database named fittrack</p>
 
-<!--<h3>2. Create a file named gradle.properties</h3>-->
-
 <br><br>
 <p><b>For the interface (Mobile) to be usable, the Backend must be running. Otherwise, the requests sent from the interface will not be functional.</b></p>
 <br>
 <p><i>Access the project's Mobile from the following link:</i></p>
 <p>https://github.com/Ozdenizmb/FitTrack-Mobile</p>
+<br>
+<p>Video Link: https://www.youtube.com/watch?v=2yXd5kN3yOA</p>
 
 <br><br><br>
 <h2>Screenshots</h2>
